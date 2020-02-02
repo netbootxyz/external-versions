@@ -1,0 +1,30 @@
+sudo: true
+
+language: bash
+
+services:
+  - docker
+
+env:
+  global:
+    - BRANCH="smartos"
+    - GITHUB_ENDPOINT="netbootxyz/external-versions"
+    - DEBIAN_FRONTEND="noninteractive"
+    - BUILD_TYPE="versioning"
+
+branches:
+  only:
+    - 'smartos'
+if: type != pull_request AND tag IS blank
+script:
+  - |
+    export EXTERNAL_VERSION=$(sudo bash version.sh)
+  - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
+  - git config --local user.name $GIT_USERNAME
+  - git config --local user.email $GIT_EMAIL
+  - ./build.sh ${BUILD_TYPE} "${EXTERNAL_VERSION}" || travis_terminate 0
+  - ./build.sh releases "${EXTERNAL_VERSION}"
+after_success:
+  - ./build.sh discord versiongood
+after_failure: 
+  - ./build.sh discord versionbad

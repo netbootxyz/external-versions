@@ -1,0 +1,13 @@
+releases:
+  smartos:
+    name: "SmartOS"
+    mirror: "https://netboot.joyent.com/os/"
+    base_dir: "/platform/i86pc/"
+    enabled: true
+    menu: "unix"
+    versions:
+{% set versions = version.split(',') %}
+{% for version in versions %}
+      - name: "{{ version }}"
+        code_name: "{{ version }}"
+{% endfor %}
