@@ -1,10 +1,10 @@
 releases:
-  archlinux:
-    base_dir: archlinux
+  ipfire:
+    base_dir: releases/ipfire-{{ version.split('.')[0] }}.x
     enabled: true
     menu: linux
-    mirror: mirror.rackspace.com
-    name: Arch Linux
+    mirror: https://downloads.ipfire.org
+    name: IPFire
     versions:
     - code_name: {{ version }}
-      name: {{ version }}
+      name: {{ version.split('-')[0] }} {{ version.split('-')[1] | title }}
