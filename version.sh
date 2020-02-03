@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -fsL https://netboot.joyent.com/smartos.ipxe | awk '/^item --gap Platform Images/{flag=1;next}/^item --gap Options/{flag=0}flag {printf $4","}' |sed 's/.$//')
-# make sure the return has a sane length
-if [[ $(printf "${VERSION}" | wc -c) > 10 ]]; then
+VERSION=$(curl -sfL http://mirror.rackspace.com/archlinux/iso/latest/md5sums.txt | awk -F '(archlinux-|-x86_64.iso)' '/-x86_64.iso/ {print $2;exit}')
+# make sure the return has a sane version
+while [[ "${VERSION}" =~ ^[0-9]{4}.[0-9]{2}.[0-9]{2}$ ]]; do
   echo "${VERSION}"
-else
-  exit 1
-fi
+  exit 0
+done
+exit 1

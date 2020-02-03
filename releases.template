@@ -1,13 +1,10 @@
 releases:
-  smartos:
-    name: "SmartOS"
-    mirror: "https://netboot.joyent.com/os/"
-    base_dir: "/platform/i86pc/"
+  archlinux:
+    base_dir: archlinux
     enabled: true
-    menu: "unix"
+    menu: linux
+    mirror: mirror.rackspace.com
+    name: Arch Linux
     versions:
-{% set versions = version.split(',') %}
-{% for version in versions %}
-      - name: "{{ version }}"
-        code_name: "{{ version }}"
-{% endfor %}
+    - code_name: {{ version }}
+      name: {{ version }}

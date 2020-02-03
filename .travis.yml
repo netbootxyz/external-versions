@@ -7,14 +7,14 @@ services:
 
 env:
   global:
-    - BRANCH="smartos"
+    - BRANCH="archlinux"
     - GITHUB_ENDPOINT="netbootxyz/external-versions"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="versioning"
 
 branches:
   only:
-    - 'smartos'
+    - 'archlinux'
 if: type != pull_request AND tag IS blank
 script:
   - |
