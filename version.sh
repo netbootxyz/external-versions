@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sL https://www.ipfire.org/download | awk -F '(x/|/ipfire-)' '/x86_64-full-/ {print $3;exit}')
+VERSION=$(curl -s http://tinycorelinux.net/downloads.html |awk -F '(<a href="|/x86/release/)' '/Core x86 Release Files/ {print $2}')
 # make sure the return has a sane version
-while [[ "${VERSION}" =~ ^[0-9].[0-9][0-9]-core* ]]; do
+while [[ "${VERSION}" =~ ^[0-9][0-9].x* ]]; do
   echo "${VERSION}"
   exit 0
 done

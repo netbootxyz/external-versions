@@ -1,10 +1,107 @@
 releases:
-  ipfire:
-    base_dir: releases/ipfire-{{ version.split('.')[0] }}.x
+  tinycore:
     enabled: true
     menu: linux
-    mirror: https://downloads.ipfire.org
-    name: IPFire
+    mirror: http://distro.ibiblio.org/tinycorelinux
+    name: Tiny Core Linux
     versions:
-    - code_name: {{ version }}
-      name: {{ version.split('-')[0] }} {{ version.split('-')[1] | title }}
+    - arch: x86
+      code_name: core
+      initrd: /{{ version }}/x86/release/distribution_files/core.gz
+      kernel: /{{ version }}/x86/release/distribution_files/vmlinuz
+      name: Core
+    - arch: x86_64
+      code_name: corepure
+      initrd: /{{ version }}/x86_64/release/distribution_files/corepure64.gz
+      kernel: /{{ version }}/x86_64/release/distribution_files/vmlinuz64
+      name: CorePure
+    - arch: x86
+      code_name: dcorebionic
+      initrd: /dCore/x86/release/dCore-bionic/dCore-bionic.gz
+      kernel: /dCore/x86/release/dCore-bionic/vmlinuz-bionic
+      name: dCore Bionic
+    - arch: x86
+      code_name: dcorebionicplus
+      initrd: /dCore/x86/release/dCore-bionic/dCorePlus-bionic.gz
+      kernel: /dCore/x86/release/dCore-bionic/vmlinuz-bionic
+      name: dCore Bionic Plus
+    - arch: x86
+      code_name: dcorejessie
+      initrd: /dCore/x86/release/dCore-jessie/dCore-jessie.gz
+      kernel: /dCore/x86/release/dCore-jessie/vmlinuz-jessie
+      name: dCore Jessie
+    - arch: x86
+      code_name: dcorejessieplus
+      initrd: /dCore/x86/release/dCore-jessie/dCorePlus-jessie.gz
+      kernel: /dCore/x86/release/dCore-jessie/vmlinuz-jessie
+      name: dCore Jessie Plus
+    - arch: x86
+      code_name: dcorestretch
+      initrd: /dCore/x86/release/dCore-stretch/dCore-stretch.gz
+      kernel: /dCore/x86/release/dCore-stretch/vmlinuz-stretch
+      name: dCore Stretch
+    - arch: x86
+      code_name: dcorestretchplus
+      initrd: /dCore/x86/release/dCore-stretch/dCorePlus-stretch.gz
+      kernel: /dCore/x86/release/dCore-stretch/vmlinuz-stretch
+      name: dCore Stretch Plus
+    - arch: x86
+      code_name: dcoretrusty
+      initrd: /dCore/x86/release/dCore-trusty/dCore-trusty.gz
+      kernel: /dCore/x86/release/dCore-trusty/vmlinuz-trusty
+      name: dCore Trusty
+    - arch: x86
+      code_name: dcoretrustyplus
+      initrd: /dCore/x86/release/dCore-trusty/dCorePlus-trusty.gz
+      kernel: /dCore/x86/release/dCore-trusty/vmlinuz-trusty
+      name: dCore Trusty Plus
+    - arch: x86
+      code_name: dcorewheezy
+      initrd: /dCore/x86/release/dCore-wheezy/dCore-wheezy.gz
+      kernel: /dCore/x86/release/dCore-wheezy/vmlinuz-wheezy
+      name: dCore Wheezy
+    - arch: x86
+      code_name: dcorewheezyplus
+      initrd: /dCore/x86/release/dCore-wheezy/dCorePlus-wheezy.gz
+      kernel: /dCore/x86/release/dCore-wheezy/vmlinuz-wheezy
+      name: dCore Wheezy Plus
+    - arch: x86
+      code_name: dcorexenial
+      initrd: /dCore/x86/release/dCore-xenial/dCore-xenial.gz
+      kernel: /dCore/x86/release/dCore-xenial/vmlinuz-xenial
+      name: dCore Xenial
+    - arch: x86
+      code_name: dcorexenialplus
+      initrd: /dCore/x86/release/dCore-xenial/dCorePlus-xenial.gz
+      kernel: /dCore/x86/release/dCore-xenial/vmlinuz-xenial
+      name: dCore Xenial Plus
+    - arch: x86_64
+      code_name: dcore64bionic
+      initrd: /dCore/x86_64/release/dCore-bionic64/dCore-bionic64.gz
+      kernel: /dCore/x86_64/release/dCore-bionic64/vmlinuz-bionic64
+      name: dCore64 Bionic
+    - arch: x86_64
+      code_name: dcore64bionicplus
+      initrd: /dCore/x86_64/release/dCore-bionic64/dCorePlus-bionic64.gz
+      kernel: /dCore/x86_64/release/dCore-bionic64/vmlinuz-bionic64
+      name: dCore64 Bionic Plus
+    - arch: x86_64
+      code_name: dcore64buster
+      initrd: /dCore/x86_64/release/dCore-buster64/dCore-buster64.gz
+      kernel: /dCore/x86_64/release/dCore-buster64/vmlinuz-buster64
+      name: dCore64 Buster
+    - arch: x86_64
+      code_name: dcore64busterplus
+      initrd: /dCore/x86_64/release/dCore-buster64/dCorePlus-buster64.gz
+      kernel: /dCore/x86_64/release/dCore-buster64/vmlinuz-buster64
+      name: dCore64 Buster Plus
+    - arch: x86_64
+      code_name: dcore64stretch
+      initrd: /dCore/x86_64/release/dCore-stretch64/dCore-stretch64.gz
+      kernel: /dCore/x86_64/release/dCore-stretch64/vmlinuz-stretch64
+      name: dCore64 Stretch
+    - arch: x86_64
+      code_name: dcore64stretchplus
+      initrd: /dCore/x86_64/release/dCore-stretch64/dCorePlus-stretch64.gz
+      kernel: /dCore/x86_64/release/dCore-stretch64/vmlinuz-stretch64
+      name: dCore Stretch Plus
