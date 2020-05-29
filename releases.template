@@ -7,6 +7,6 @@ releases:
     name: Alpine Linux
     versions:
     - code_name: v{{ version }}
-      name: {{ version }}
+      name: '{{ version }}'
     - code_name: edge
       name: Edge (development)
