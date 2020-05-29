@@ -7,14 +7,14 @@ services:
 
 env:
   global:
-    - BRANCH="archlinux"
+    - BRANCH="alpinelinux"
     - GITHUB_ENDPOINT="netbootxyz/external-versions"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="versioning"
 
 branches:
   only:
-    - 'archlinux'
+    - 'alpinelinux'
 if: type != pull_request AND tag IS blank
 script:
   - |

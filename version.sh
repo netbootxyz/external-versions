@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sfL http://mirror.rackspace.com/archlinux/iso/latest/md5sums.txt | awk -F '(archlinux-|-x86_64.iso)' '/-x86_64.iso/ {print $2;exit}')
+VERSION=$(curl -sL http://dl-cdn.alpinelinux.org/alpine/ | awk -F'(href="|/">)' '/href/ {print $2}' |grep -Po "v\d+.*" | sort -rV | head -n1 | sed 's/^v//')
 # make sure the return has a sane version
-while [[ "${VERSION}" =~ ^[0-9]{4}.[0-9]{2}.[0-9]{2}$ ]]; do
+while [[ "${VERSION}" =~ ^[0-9]{1}.[0-9] ]]; do
   echo "${VERSION}"
   exit 0
 done

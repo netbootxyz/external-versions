@@ -1,10 +1,12 @@
 releases:
-  archlinux:
-    base_dir: archlinux
+  alpinelinux:
+    base_dir: alpine
     enabled: true
     menu: linux
-    mirror: mirror.rackspace.com
-    name: Arch Linux
+    mirror: http://dl-cdn.alpinelinux.org
+    name: Alpine Linux
     versions:
-    - code_name: {{ version }}
+    - code_name: v{{ version }}
       name: {{ version }}
+    - code_name: edge
+      name: Edge (development)
