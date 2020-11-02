@@ -1,10 +1,10 @@
 releases:
-  archlinux:
-    base_dir: archlinux
+  coreos:
+    base_dir: prod/streams
     enabled: true
     menu: linux
-    mirror: mirror.rackspace.com
-    name: Arch Linux
+    mirror: https://builds.coreos.fedoraproject.org
+    name: Fedora CoreOS
     versions:
     - code_name: {{ version }}
-      name: {{ version }}
+      name: stable

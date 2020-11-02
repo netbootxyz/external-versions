@@ -1,20 +1,18 @@
-sudo: true
-
-language: bash
+language: shell
 
 services:
   - docker
 
 env:
   global:
-    - BRANCH="archlinux"
+    - BRANCH="coreos"
     - GITHUB_ENDPOINT="netbootxyz/external-versions"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="versioning"
 
 branches:
   only:
-    - 'archlinux'
+    - 'coreos'
 if: type != pull_request AND tag IS blank
 script:
   - |
