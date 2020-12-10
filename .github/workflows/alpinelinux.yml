@@ -8,6 +8,7 @@ on:
     - cron: '0 6 * * 0'
 
 env:
+  BRANCH: alpinelinux
   GITHUB_ENDPOINT: netbootxyz/external-versions
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   GITHUB_SHA: ${{ github.sha }}
