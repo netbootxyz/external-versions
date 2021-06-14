@@ -3,9 +3,7 @@ name: nixos
 on:
   push:
     branches:
-      - nixos
-  schedule:
-    - cron: '0 0 * * *'
+      - master
 
 env:
   BRANCH: nixos
