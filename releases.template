@@ -5,7 +5,7 @@ releases:
     menu: linux
     name: NixOS
     versions:
-{% set versions = version.split('\n') %}
+{% set versions = version.split(';') %}
 {% for value in versions %}
     - code_name: {{ value }}
       name: {{ value }}
