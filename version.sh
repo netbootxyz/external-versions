@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sfL http://mirror.rackspace.com/archlinux/iso/latest/md5sums.txt | awk -F '(archlinux-|-x86_64.iso)' '/-x86_64.iso/ {print $2;exit}')
+VERSION=$(git ls-remote --tags https://github.com/nix-community/nixos-images.git | awk -F'/' '{print $3}')
 # make sure the return has a sane version
-while [[ "${VERSION}" =~ ^[0-9]{4}.[0-9]{2}.[0-9]{2}$ ]]; do
+while [[ "${VERSION}" =~ ^nixos-.* ]]; do
   echo "${VERSION}"
   exit 0
 done

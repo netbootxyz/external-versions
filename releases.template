@@ -1,10 +1,12 @@
 releases:
-  archlinux:
-    base_dir: archlinux
+  nixos:
+    base_dir: nixos
     enabled: true
     menu: linux
-    mirror: mirrors.evowise.com
-    name: Arch Linux
+    name: NixOS
     versions:
-    - code_name: {{ version }}
-      name: {{ version }}
+{% set versions = version.split('\n') %}
+{% for value in versions %}
+    - code_name: {{ value }}
+      name: {{ value }}
+{% endfor %}
