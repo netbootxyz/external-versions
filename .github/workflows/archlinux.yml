@@ -1,0 +1,58 @@
+name: archlinux
+
+on:
+  push:
+    branches:
+      - archlinux
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  BRANCH: archlinux
+  GITHUB_ENDPOINT: netbootxyz/external-versions
+  DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
+  BUILD_TYPE: versioning
+  DEBIAN_FRONTEND: noninteractive
+  CI_TOKEN: ${{ secrets.CI_TOKEN }}
+
+jobs:
+  version-checker:
+    name: Version Checker
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: archlinux
+
+    - name: Get SHA of actual branch instead of master
+      run: |
+        export GITHUB_SHA=$(git rev-parse HEAD)
+        echo "GITHUB_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+
+    - name: Retrieve latest version from upstream and set vars
+      run: |
+        export EXTERNAL_VERSION=$(sudo bash version.sh)
+        echo "EXTERNAL_VERSION=$EXTERNAL_VERSION" >> $GITHUB_ENV
+        wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
+        git config --global user.name netboot-ci
+        git config --global user.email netboot-ci@netboot.xyz
+
+    - name: Check version
+      id: compare
+      run: ./build.sh ${{ env.BUILD_TYPE }} ${{ env.EXTERNAL_VERSION }}
+      continue-on-error: true
+
+    - name: Build release
+      if: steps.compare.outcome == 'success' && steps.compare.conclusion == 'success'
+      run: |
+        ./build.sh releases ${{ env.EXTERNAL_VERSION }}
+
+    - name: Notify Discord on failure
+      if: failure()
+      run: |
+        ./build.sh discord versionbad
+
+    - name: Notify Discord on completion
+      if: steps.compare.outcome == 'success' && steps.compare.conclusion == 'success' && success()
+      run: |
+        ./build.sh discord versiongood
