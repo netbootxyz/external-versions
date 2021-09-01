@@ -6,5 +6,9 @@ releases:
     mirror: https://builds.coreos.fedoraproject.org
     name: Fedora CoreOS
     versions:
-    - code_name: {{ version }}
-      name: stable
+{% set versions = version.split(',') %}
+{% for value in versions %}
+{% set split_value = value.split('-') %}
+    - code_name: {{ split_value[0] }}
+      name: {{ split_value[1] }}
+{% endfor %}
