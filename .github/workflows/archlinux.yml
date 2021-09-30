@@ -1,14 +1,14 @@
-name: archlinux-64
+name: archlinux
 
 on:
   push:
     branches:
-      - archlinux-64
+      - archlinux
   schedule:
     - cron: '0 0 * * *'
 
 env:
-  BRANCH: archlinux-64
+  BRANCH: archlinux
   GITHUB_ENDPOINT: netbootxyz/external-versions
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: versioning
@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: archlinux-64
+        ref: archlinux
 
     - name: Get SHA of actual branch instead of master
       run: |
