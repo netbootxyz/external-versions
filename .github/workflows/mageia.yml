@@ -1,14 +1,14 @@
-name: archlinux
+name: mageia
 
 on:
   push:
     branches:
-      - archlinux
+      - mageia
   schedule:
     - cron: '0 6 * * 0'
 
 env:
-  BRANCH: archlinux
+  BRANCH: mageia
   GITHUB_ENDPOINT: netbootxyz/external-versions
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: versioning
