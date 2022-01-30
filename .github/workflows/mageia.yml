@@ -5,7 +5,7 @@ on:
     branches:
       - mageia
   schedule:
-    - cron: '0 6 * * 0'
+    - cron: '0 0 * * *'
 
 env:
   BRANCH: mageia
@@ -21,6 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: mageia
+
+    - name: Get SHA of actual branch instead of master
+      run: |
+        export GITHUB_SHA=$(git rev-parse HEAD)
+        echo "GITHUB_SHA=$GITHUB_SHA" >> $GITHUB_ENV
 
     - name: Retrieve latest version from upstream and set vars
       run: |
