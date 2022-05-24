@@ -6,7 +6,8 @@ on:
       - alpinelinux
   schedule:
     - cron: '0 0 * * *'
-
+  workflow_dispatch:
+  
 env:
   BRANCH: alpinelinux
   GITHUB_ENDPOINT: netbootxyz/external-versions

@@ -6,7 +6,8 @@ on:
       - ipfire
   schedule:
     - cron: '0 0 * * *'
-
+  workflow_dispatch:
+  
 env:
   BRANCH: ipfire
   GITHUB_ENDPOINT: netbootxyz/external-versions
