@@ -6,7 +6,8 @@ on:
       - archlinux
   schedule:
     - cron: '0 0 * * *'
-
+  workflow_dispatch:
+  
 env:
   BRANCH: archlinux
   GITHUB_ENDPOINT: netbootxyz/external-versions
