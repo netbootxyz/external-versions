@@ -6,7 +6,8 @@ on:
       - smartos
   schedule:
     - cron: '0 0 * * *'
-
+  workflow_dispatch:
+  
 env:
   BRANCH: smartos
   GITHUB_ENDPOINT: netbootxyz/external-versions
