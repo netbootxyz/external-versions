@@ -7,3 +7,4 @@ while [[ "${VERSION}" =~ ^nixos-.* ]]; do
   exit 0
 done
 exit 1
+
