@@ -1,7 +1,7 @@
 releases:
   smartos:
     name: "SmartOS"
-    mirror: "https://netboot.joyent.com/os/"
+    mirror: "https://netboot.smartos.org/os/"
     base_dir: "/platform/i86pc/"
     enabled: true
     menu: "unix"
