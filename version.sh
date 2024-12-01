@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 VERSION=$(git ls-remote --tags https://github.com/nix-community/nixos-images.git | grep -v assets | awk -F'/' '{print $3}' | paste -s -d 'Q')
 
