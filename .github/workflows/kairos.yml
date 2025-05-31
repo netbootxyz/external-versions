@@ -1,9 +1,9 @@
-name: nixos
+name: kairos
 
 on:
   push:
     branches:
-      - nixos
+      - kairos
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   
 env:
-  BRANCH: nixos
+  BRANCH: kairos
   GITHUB_ENDPOINT: netbootxyz/external-versions
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: versioning
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: nixos
+        ref: kairos
 
     - name: Get SHA of actual branch instead of master
       run: |
